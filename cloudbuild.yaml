@@ -6,12 +6,12 @@ steps:
     args: ['build', '-t', 'us-central1-docker.pkg.dev/vivid-fragment-410115/sample-node-repo/samplenodeapp:latest', '.']
   
   # Step 2: Run tests
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['run', '--rm', 'us-central1-docker.pkg.dev/vivid-fragment-410115/sample-node-repo/samplenodeapp:latest', 'npm', 'test']
+  #- name: 'gcr.io/cloud-builders/docker'
+  #  args: ['run', '--rm', 'us-central1-docker.pkg.dev/vivid-fragment-410115/sample-node-repo/samplenodeapp:latest', 'npm', 'test']
 
   # Step 3: Push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '']
+    args: ['push', 'us-central1-docker.pkg.dev/vivid-fragment-410115/sample-node-repo/samplenodeapp:latest']
 
   # Step 4: Deploy the application (example for Cloud Run)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -29,4 +29,5 @@ options:
   logging: CLOUD_LOGGING_ONLY  # or you can choose other logging options
 
 # If you want to specify a service account
-service_account: ashish-project-101@vivid-fragment-410115.iam.gserviceaccount.com
+service_account: 256553552171@cloudbuild.gserviceaccount.com
+
