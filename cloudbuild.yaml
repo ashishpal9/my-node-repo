@@ -1,12 +1,11 @@
 steps:
 # Step 1: Build the Docker Image
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/propane-bebop-438107-j3/node-repository/my-build:prod1', '.' ]
+  args: [ 'build', '-t', 'us-central1-docker.pkg.dev/node101-438110/node-app/my-build:prod1', '.' ]
 
 # Step 2: Push the image to the Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'us-central1-docker.pkg.dev/propane-bebop-438107-j3/node-repository/my-build:prod1' ]
-
+  args: [ 'push', 'us-central1-docker.pkg.dev/node101-438110/node-app/my-build:prod1' ]
 
 # Step 3: Deployment to Cloud Run after image is pushed
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -15,7 +14,7 @@ steps:
   - 'deploy'
   - 'my-service'  # Replace with your service name
   - '--image'
-  - 'us-central1-docker.pkg.dev/propane-bebop-438107-j3/node-repository/my-build:prod1'
+  - 'us-central1-docker.pkg.dev/node101-438110/node-app/my-build:prod1'
   - '--region'
   - 'us-central1'  # You can change this if you want to deploy to a different region
   - '--platform'
